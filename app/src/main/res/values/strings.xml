@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Homework2</string>
+    <string name="repeat">Обновить</string>
+    <string name="asyncImage_contentDescription">Случайный котик</string>
+    <string name="error_contentDescription">Ошибка</string>
+    <string name="imageUrl">https://aleatori.cat/random</string>
+    <string name="randomCat">Случайный котик под номером:</string>
+    <string name="catMessage_1">Мяу! Новый котик! 🐱</string>
+    <string name="catMessage_2">Еще один пушистик! 🐈</string>
+    <string name="catMessage_3">Прелесть какая! 😻</string>
+    <string name="catMessage_4">Идеальный котик! 🌟</string>
+    <string name="catMessage_5">Обожаю таких! 💖</string>
+    <string name="catMessage_6">Самый лучший котик! 🏆</string>
+    <string name="catMessage_7">Просто космос! 🚀</string>
+    <string name="catMessage_8">Невероятно мило! 🥰</string>
+    <string name="catMessage_9">Этот котик особенный! ✨</string>
+    <string name="catMessage_10">Нашел своего котика! 💕</string>
 </resources>
