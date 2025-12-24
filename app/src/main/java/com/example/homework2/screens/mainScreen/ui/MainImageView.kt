@@ -36,7 +36,7 @@ import com.example.homework2.viewModel.ICatViewModel
 
 
 @Composable
-fun CatImageView(catId: Int, viewModel: ICatViewModel) {
+fun MainImageView(catId: Int, viewModel: ICatViewModel) {
 
     var imageKey by remember(catId) { mutableStateOf(catId) }
 
@@ -49,9 +49,10 @@ fun CatImageView(catId: Int, viewModel: ICatViewModel) {
         SubcomposeAsyncImage(
             model = "${context.getString(viewModel.imageUrlId)}?cat=$catId",
             contentDescription = context.getString(R.string.asyncImage_contentDescription),
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
+                .defaultMinSize(minHeight = Size.minImageSize)
                 .padding(horizontal = Paddings.small)
                 .clip(RoundedCornerShape(Paddings.medium))
                 .clickable {

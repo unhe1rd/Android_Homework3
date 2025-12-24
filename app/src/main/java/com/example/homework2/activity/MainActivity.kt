@@ -8,7 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.homework2.ui.CatList
+import com.example.homework2.ui.MainList
 import com.example.homework2.ui.layout.Paddings
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +38,6 @@ fun CoilRandomImageApp() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CatList()
+        MainList()
     }
 }

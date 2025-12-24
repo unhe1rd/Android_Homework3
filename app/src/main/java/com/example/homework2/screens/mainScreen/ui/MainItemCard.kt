@@ -27,7 +27,7 @@ import com.example.homework2.ui.layout.Size
 import com.example.homework2.viewModel.CatViewModel
 
 @Composable
-fun CatItemCard(catId: Int) {
+fun MainItemCard(catId: Int) {
     val viewModel = CatViewModel()
 
     Card(
@@ -44,7 +44,7 @@ fun CatItemCard(catId: Int) {
             modifier = Modifier.padding(Paddings.medium),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CatImageView(catId = catId, viewModel = viewModel)
+            MainImageView(catId = catId, viewModel = viewModel)
 
             HorizontalDivider(
                 modifier = Modifier
