@@ -9,7 +9,7 @@ import com.example.homework3.R
 class MockNetworkService {
 
     private suspend fun simulateNetworkDelay() {
-        delay(1000) // Задержка 1 секунда
+        delay(1000)
     }
 
     suspend fun getAllInstructions(): ApiResponse<List<Instruction>> {
@@ -18,54 +18,6 @@ class MockNetworkService {
             ApiResponse.Success(mockInstructions)
         } catch (e: Exception) {
             ApiResponse.Error("Ошибка загрузки данных: ${e.message}")
-        }
-    }
-
-    suspend fun getInstructionById(id: String): ApiResponse<Instruction> {
-        return try {
-            simulateNetworkDelay()
-            val instruction = mockInstructions.find { it.id == id }
-            if (instruction != null) {
-                ApiResponse.Success(instruction)
-            } else {
-                ApiResponse.Error("Инструкция с ID $id не найдена")
-            }
-        } catch (e: Exception) {
-            ApiResponse.Error("Ошибка загрузки данных: ${e.message}")
-        }
-    }
-
-    suspend fun getFavoriteInstructions(): ApiResponse<List<Instruction>> {
-        return try {
-            simulateNetworkDelay()
-            val favorites = mockInstructions.filter { it.isFavorite }
-            ApiResponse.Success(favorites)
-        } catch (e: Exception) {
-            ApiResponse.Error("Ошибка загрузки данных: ${e.message}")
-        }
-    }
-
-    suspend fun searchInstructions(query: String): ApiResponse<List<Instruction>> {
-        return try {
-            simulateNetworkDelay()
-            val results = mockInstructions.filter {
-                it.title.contains(query, ignoreCase = true) ||
-                        it.subtitle.contains(query, ignoreCase = true) ||
-                        it.description.contains(query, ignoreCase = true)
-            }
-            ApiResponse.Success(results)
-        } catch (e: Exception) {
-            ApiResponse.Error("Ошибка поиска: ${e.message}")
-        }
-    }
-
-    suspend fun toggleFavorite(instructionId: String, isFavorite: Boolean): ApiResponse<Boolean> {
-        return try {
-            simulateNetworkDelay()
-            // В реальном приложении здесь был бы сетевой запрос
-            ApiResponse.Success(isFavorite)
-        } catch (e: Exception) {
-            ApiResponse.Error("Ошибка обновления избранного: ${e.message}")
         }
     }
 
