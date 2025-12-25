@@ -17,9 +17,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homework3.R
+import com.example.homework3.layout.Elevations
+import com.example.homework3.layout.Spacers
 import com.example.homework3.ui.layout.Paddings
 import com.example.homework3.ui.layout.Size
 
@@ -37,7 +40,7 @@ fun MainItemCard(
             .fillMaxWidth()
             .padding(horizontal = Paddings.medium, vertical = Paddings.small),
         shape = RoundedCornerShape(Size.baseCornerRadius),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = Elevations.extraSmall),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
             contentColor = MaterialTheme.colorScheme.onSurface
@@ -91,14 +94,14 @@ fun MainItemCard(
                             fontSize = 12.sp
                         )
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(2.dp),
+                            horizontalArrangement = Arrangement.spacedBy(Spacers.extraSmall),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             repeat(difficulty) {
                                 Icon(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = "Сложность",
-                                    modifier = Modifier.size(16.dp),
+                                    modifier = Modifier.size(Size.itemCardIconSize),
                                     tint = Color(0xFFFFA000)
                                 )
                             }
@@ -106,11 +109,11 @@ fun MainItemCard(
                                 Icon(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = "Пустая сложность",
-                                    modifier = Modifier.size(16.dp),
+                                    modifier = Modifier.size(Size.itemCardIconSize),
                                     tint = MaterialTheme.colorScheme.outline
                                 )
                             }
-                            Spacer(modifier = Modifier.width(4.dp))
+                            Spacer(modifier = Modifier.width(Spacers.extraSmall))
                         }
                     }
                 }

@@ -15,17 +15,14 @@ import kotlinx.coroutines.launch
 class ProfileViewModel : BaseViewModel<ProfileAction, ProfileState>() {
 
     private val _state = MutableStateFlow(
-        ProfileState(
-            userProfile = UserProfile(
-                id = "user123",
-                name = "Даниил",
-                rank = "6",
-                studiedTopics = 10
-            )
-        )
+        ProfileState()
     )
 
     override val state: StateFlow<ProfileState> = _state.asStateFlow()
+
+    init {
+        loadProfile()
+    }
 
     override fun onAction(action: ProfileAction) {
         when (action) {

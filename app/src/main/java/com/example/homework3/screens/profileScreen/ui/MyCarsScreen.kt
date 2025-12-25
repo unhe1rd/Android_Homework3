@@ -38,9 +38,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.homework3.layout.Elevations
+import com.example.homework3.layout.Spacers
 import com.example.homework3.screens.profileScreen.models.Vehicle
 import com.example.homework3.screens.profileScreen.viewModel.MyCarsState
 import com.example.homework3.screens.profileScreen.viewModel.MyCarsViewModel
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @Composable
 fun MyCarsScreen(
@@ -120,15 +124,15 @@ private fun MyCarsContent(
                     Icon(
                         imageVector = Icons.Default.DirectionsCar,
                         contentDescription = "Нет авто",
-                        modifier = Modifier.size(64.dp),
+                        modifier = Modifier.size(Size.carIconSize),
                         tint = Color.Gray
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(Spacers.large))
                     Text(
                         text = "У вас пока нет автомобилей",
                         color = Color.Gray
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(Spacers.small))
                     Text(
                         text = "Нажмите + чтобы добавить",
                         color = Color.Gray
@@ -138,8 +142,8 @@ private fun MyCarsContent(
 
             else -> {
                 LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    contentPadding = PaddingValues(Paddings.medium),
+                    verticalArrangement = Arrangement.spacedBy(Spacers.medium)
                 ) {
                     items(state.cars) { vehicle ->
                         CarCard(vehicle = vehicle)
@@ -157,10 +161,10 @@ private fun CarCard(vehicle: Vehicle) {
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = CardDefaults.cardElevation(Elevations.extraSmall)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(Paddings.medium)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -179,7 +183,7 @@ private fun CarCard(vehicle: Vehicle) {
                 )
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(Spacers.medium))
 
             CardInfoRow(
                 label = "Гос. номер:",
@@ -212,7 +216,7 @@ private fun CardInfoRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp)
+            .padding(vertical = Paddings.extraSmall)
     ) {
         Text(
             text = label,

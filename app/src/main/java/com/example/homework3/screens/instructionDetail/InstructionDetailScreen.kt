@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.homework3.R
 import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,13 +61,12 @@ fun InstructionDetailScreen(
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
         ) {
-            // Изображение инструкции
             Image(
                 painter = painterResource(id = R.drawable.oil_change),
                 contentDescription = "Изображение инструкции",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(250.dp)
+                    .height(Size.instructionImageHeight)
                     .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)),
                 contentScale = ContentScale.Crop
             )
@@ -75,7 +75,6 @@ fun InstructionDetailScreen(
                 modifier = Modifier.padding(Paddings.large),
                 verticalArrangement = Arrangement.spacedBy(Paddings.medium)
             ) {
-                // Заголовок
                 Text(
                     text = "Замена масла",
                     style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),

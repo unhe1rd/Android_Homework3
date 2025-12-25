@@ -14,6 +14,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.homework3.data.model.ApiResponse
 import com.example.homework3.data.model.Instruction
+import com.example.homework3.layout.Spacers
 import com.example.homework3.presentation.viewmodel.MainViewModel
 import com.example.homework3.ui.MainItemCard
 import com.example.homework3.ui.layout.Paddings
@@ -104,7 +105,7 @@ fun EmptyScreen() {
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(Spacers.large)
         ) {
             Text(
                 text = "Инструкции не найдены",
