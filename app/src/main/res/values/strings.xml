@@ -8,4 +8,21 @@
     <string name="main_screen_title">Главная</string>
     <string name="details_screen_title">Мои инструкции</string>
     <string name="profile_screen_title">Профиль</string>
+    <string name="dificult">Сложность:</string>
+    <string name="dificult_2">Сложность</string>
+    <string name="dificult_3">Сложность выполнения:</string>
+    <string name="empty_dificult">Пустая сложность</string>
+    <string name="imageInstruction_contentDescription">Изображение инструкции</string>
+    <string name="tools">Инструменты</string>
+    <string name="start_instruction">Начать выполнение</string>
+    <string name="difficulty_very_easy">(Очень легко)</string>
+    <string name="difficulty_easy">(Легко)</string>
+    <string name="difficulty_medium">(Средняя сложность)</string>
+    <string name="difficulty_hard">(Сложно)</string>
+    <string name="difficulty_very_hard">(Очень сложно)</string>
+    <string name="time">Время</string>
+    <string name="discription">Подробное описание:</string>
+    <string name="back">Назад</string>
+    <string name="download">Загрузка...</string>
+    <string name="instructionsDetailTitle">Детальная инструкции</string>
 </resources>

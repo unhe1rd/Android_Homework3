@@ -16,12 +16,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import com.example.homework3.R
 import com.example.homework3.data.model.ApiResponse
 import com.example.homework3.layout.Spacers
 import com.example.homework3.presentation.viewmodel.InstructionDetailViewModel
@@ -57,19 +59,19 @@ fun InstructionDetailScreen(
                     when (instructionState) {
                         is ApiResponse.Loading -> {
                             Text(
-                                text = "Загрузка...",
+                                text = stringResource(R.string.download),
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                             )
                         }
                         is ApiResponse.Error -> {
                             Text(
-                                text = "Ошибка",
+                                text = stringResource(R.string.error_contentDescription),
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                             )
                         }
                         is ApiResponse.Success -> {
                             Text(
-                                text = "Детальная инструкция",
+                                text = stringResource(R.string.instructionsDetailTitle),
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
                             )
                         }
@@ -79,7 +81,7 @@ fun InstructionDetailScreen(
                     IconButton(onClick = { navController.navigateUp() }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Назад"
+                            contentDescription = stringResource(R.string.back)
                         )
                     }
                 }
@@ -108,7 +110,7 @@ fun InstructionDetailScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Ошибка загрузки",
+                        text = stringResource(R.string.error_contentDescription),
                         style = MaterialTheme.typography.headlineMedium,
                         color = MaterialTheme.colorScheme.error
                     )
@@ -124,7 +126,7 @@ fun InstructionDetailScreen(
                             viewModel.loadInstructionById(instructionId)
                         }
                     }) {
-                        Text("Повторить попытку")
+                        stringResource(R.string.try_again)
                     }
                 }
             }
@@ -145,7 +147,7 @@ fun InstructionDetailScreen(
                             .padding(paddingValues),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text("Инструкция не найдена")
+                        stringResource(R.string.try_again)
                     }
                 }
             }
@@ -167,7 +169,7 @@ fun InstructionDetailContent(
     ) {
         Image(
             painter = painterResource(id = instruction.imageResId),
-            contentDescription = "Изображение инструкции",
+            contentDescription = stringResource(R.string.imageInstruction_contentDescription),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(Size.instructionImageHeight)
@@ -210,7 +212,7 @@ fun InstructionDetailContent(
                     verticalArrangement = Arrangement.spacedBy(Paddings.small)
                 ) {
                     Text(
-                        text = "Сложность выполнения:",
+                        text = stringResource(R.string.dificult_3),
                         style = MaterialTheme.typography.labelLarge,
                         fontWeight = FontWeight.Medium
                     )
@@ -258,7 +260,7 @@ fun InstructionDetailContent(
                     verticalArrangement = Arrangement.spacedBy(Paddings.medium)
                 ) {
                     Text(
-                        text = "Подробное описание:",
+                        text = stringResource(R.string.discription),
                         style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                         color = MaterialTheme.colorScheme.primary
                     )
@@ -305,7 +307,7 @@ fun InstructionDetailContent(
                             modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         )
                         Text(
-                            text = "Время",
+                            text = stringResource(R.string.time),
                             style = MaterialTheme.typography.labelMedium
                         )
                         Text(
@@ -332,7 +334,7 @@ fun InstructionDetailContent(
                             modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         )
                         Text(
-                            text = "Инструменты",
+                            text = stringResource(R.string.tools),
                             style = MaterialTheme.typography.labelMedium
                         )
                         Text(
@@ -355,7 +357,7 @@ fun InstructionDetailContent(
                 )
             ) {
                 Text(
-                    text = "Начать выполнение",
+                    text = stringResource(R.string.start_instruction),
                     style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(vertical = Paddings.base)
                 )
@@ -367,11 +369,11 @@ fun InstructionDetailContent(
 @Composable
 fun getDifficultyText(difficulty: Int): String {
     return when (difficulty) {
-        1 -> "(Очень легко)"
-        2 -> "(Легко)"
-        3 -> "(Средняя сложность)"
-        4 -> "(Сложно)"
-        5 -> "(Очень сложно)"
+        1 -> stringResource(R.string.difficulty_very_easy)
+        2 -> stringResource(R.string.difficulty_easy)
+        3 -> stringResource(R.string.difficulty_medium)
+        4 -> stringResource(R.string.difficulty_hard)
+        5 -> stringResource(R.string.difficulty_very_hard)
         else -> ""
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -85,7 +86,7 @@ fun MainItemCard(
                 ) {
                     Column {
                         Text(
-                            text = "Сложность:",
+                            text = stringResource(R.string.dificult),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp
@@ -97,7 +98,7 @@ fun MainItemCard(
                             repeat(instruction.difficulty) {
                                 Icon(
                                     imageVector = Icons.Default.Star,
-                                    contentDescription = "Сложность",
+                                    contentDescription = stringResource(R.string.dificult_2),
                                     modifier = Modifier.size(Size.itemCardIconSize),
                                     tint = Color(0xFFFFA000)
                                 )
@@ -105,7 +106,7 @@ fun MainItemCard(
                             repeat(5 - instruction.difficulty) {
                                 Icon(
                                     imageVector = Icons.Default.Star,
-                                    contentDescription = "Пустая сложность",
+                                    contentDescription = stringResource(R.string.empty_dificult),
                                     modifier = Modifier.size(Size.itemCardIconSize),
                                     tint = MaterialTheme.colorScheme.outline
                                 )
@@ -125,7 +126,7 @@ fun MainItemCard(
             ) {
                 Image(
                     painter = painterResource(id = instruction.imageResId),
-                    contentDescription = "Изображение инструкции",
+                    contentDescription = stringResource(R.string.imageInstruction_contentDescription),
                     modifier = Modifier.aspectRatio(1f),
                     contentScale = ContentScale.Crop
                 )
