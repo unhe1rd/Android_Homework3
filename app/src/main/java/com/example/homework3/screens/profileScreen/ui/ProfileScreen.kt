@@ -56,10 +56,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.homework3.layout.Elevations
+import com.example.homework3.layout.Spacers
 import com.example.homework3.screens.profileScreen.models.ProfileAction
 import com.example.homework3.screens.profileScreen.models.ProfileState
 import com.example.homework3.screens.profileScreen.models.UserProfile
 import com.example.homework3.screens.profileScreen.viewModel.ProfileViewModel
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @Composable
 @Preview
@@ -121,12 +125,12 @@ private fun ProfileContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = Paddings.medium),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (state.isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.padding(32.dp)
+                modifier = Modifier.padding(Paddings.extraLarge)
             )
         } else if (state.errorMessage != null) {
             Text(
@@ -141,27 +145,27 @@ private fun ProfileContent(
                 }
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(Spacers.large))
 
             Card(
                 modifier = Modifier
                     .fillMaxWidth(),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(Size.medium),
                 colors = CardDefaults.cardColors(
                     containerColor = Color(0xFFBAD4FF),
                     contentColor = MaterialTheme.colorScheme.onSurface
                 ),
-                elevation = CardDefaults.cardElevation(4.dp)
+                elevation = CardDefaults.cardElevation(Elevations.extraSmall)
             ) {
                 Column(
-                    modifier = Modifier.padding(24.dp),
+                    modifier = Modifier.padding(Paddings.large),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = "Добро пожаловать,",
                         style = MaterialTheme.typography.titleLarge,
                         color = Color.Black,
-                        modifier = Modifier.padding(bottom = 4.dp)
+                        modifier = Modifier.padding(bottom = Paddings.extraSmall)
                     )
 
                     Text(
@@ -169,12 +173,12 @@ private fun ProfileContent(
                         style = MaterialTheme.typography.headlineMedium,
                         color = Color.Black,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(bottom = 24.dp)
+                        modifier = Modifier.padding(bottom = Paddings.large)
                     )
 
                     ProfileInfoCard(state.userProfile)
 
-                    Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(Spacers.extraLarge))
 
                     ProfileActions(onAction)
                 }
@@ -190,10 +194,10 @@ private fun ProfileImage(
 ) {
     Box(
         modifier = Modifier
-            .size(120.dp)
+            .size(Size.profileImageSize)
             .clip(CircleShape)
             .border(
-                width = 3.dp,
+                width = Size.profileBorderSize,
                 color = Color(0xFFBAD4FF),
                 shape = CircleShape
             )
@@ -218,7 +222,7 @@ private fun ProfileImage(
             Icon(
                 imageVector = Icons.Default.Person,
                 contentDescription = "Добавить фото",
-                modifier = Modifier.size(60.dp),
+                modifier = Modifier.size(Size.profileIconSize),
                 tint = Color(0xFFBAD4FF)
             )
         }
@@ -229,17 +233,16 @@ private fun ProfileImage(
 private fun ProfileInfoCard(userProfile: UserProfile?) {
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 0.dp),
-        shape = RoundedCornerShape(12.dp),
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(Size.base),
         colors = CardDefaults.cardColors(
             containerColor = Color.White,
             contentColor = Color.Black
         ),
-        elevation = CardDefaults.cardElevation(2.dp)
+        elevation = CardDefaults.cardElevation(Size.extraSmall)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Paddings.medium),
             horizontalAlignment = Alignment.Start
         ) {
             InfoRow(
@@ -247,7 +250,7 @@ private fun ProfileInfoCard(userProfile: UserProfile?) {
                 value = userProfile?.rank ?: ""
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(Spacers.medium))
 
             InfoRow(
                 title = "Изучено:",
@@ -288,7 +291,7 @@ private fun ProfileActions(
 ) {
     Column(
         modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
+        verticalArrangement = Arrangement.spacedBy(Spacers.medium)
     ) {
         ProfileActionButton(
             text = "Моё авто",
@@ -323,7 +326,7 @@ private fun ProfileActionButton(
             containerColor = Color.White,
             contentColor = Color.Black
         ),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(Size.buttonRoundedCornerSize),
         border = BorderStroke(1.dp, Color.LightGray),
         elevation = ButtonDefaults.buttonElevation(
             defaultElevation = 2.dp,
@@ -333,7 +336,7 @@ private fun ProfileActionButton(
         Icon(
             imageVector = icon,
             contentDescription = null,
-            modifier = Modifier.padding(end = 12.dp)
+            modifier = Modifier.padding(end = Paddings.small)
         )
         Text(
             text = text,

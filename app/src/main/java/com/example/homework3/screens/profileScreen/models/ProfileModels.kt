@@ -17,7 +17,7 @@ data class UserProfile(
 @Stable
 data class ProfileState(
     val userProfile: UserProfile? = null,
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val errorMessage: String? = null
 ) : State
 
