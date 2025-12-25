@@ -28,12 +28,8 @@ import com.example.homework3.ui.layout.Size
 
 @Composable
 fun MainItemCard(
-    title: String = "Замена масла",
-    subtitle: String = "Замена масла в моторе N43B20",
-    difficulty: Int = 2, // от 1 до 5
-    maxDifficulty: Int = 5,
-    imageResId: Int = R.drawable.oil_change,
-    onClick: () -> Unit = {}
+    instruction: Instruction,
+    onClick: (Instruction) -> Unit = {}
 ) {
     Card(
         modifier = Modifier
@@ -45,7 +41,7 @@ fun MainItemCard(
             containerColor = MaterialTheme.colorScheme.surface,
             contentColor = MaterialTheme.colorScheme.onSurface
         ),
-        onClick = onClick
+        onClick = { onClick(instruction) }
     ) {
         Row(
             modifier = Modifier
@@ -58,7 +54,7 @@ fun MainItemCard(
                 verticalArrangement = Arrangement.spacedBy(Paddings.small)
             ) {
                 Text(
-                    text = title,
+                    text = instruction.title,
                     style = MaterialTheme.typography.headlineSmall.copy(
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
@@ -68,7 +64,7 @@ fun MainItemCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = subtitle,
+                    text = instruction.subtitle,
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 3,
@@ -97,7 +93,7 @@ fun MainItemCard(
                             horizontalArrangement = Arrangement.spacedBy(Spacers.extraSmall),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            repeat(difficulty) {
+                            repeat(instruction.difficulty) {
                                 Icon(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = "Сложность",
@@ -105,7 +101,7 @@ fun MainItemCard(
                                     tint = Color(0xFFFFA000)
                                 )
                             }
-                            repeat(maxDifficulty - difficulty) {
+                            repeat(5 - instruction.difficulty) {
                                 Icon(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = "Пустая сложность",
@@ -127,7 +123,7 @@ fun MainItemCard(
                     .background(MaterialTheme.colorScheme.surfaceVariant)
             ) {
                 Image(
-                    painter = painterResource(id = imageResId),
+                    painter = painterResource(id = instruction.imageResId),
                     contentDescription = "Изображение инструкции",
                     modifier = Modifier.aspectRatio(1f),
                     contentScale = ContentScale.Crop

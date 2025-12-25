@@ -10,20 +10,9 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.navArgument
-import com.example.homework3.screens.profileScreen.ui.ProfileScreen
-import com.example.homework3.presentation.viewmodel.MainViewModel
-import com.example.homework3.screens.detailsScreen.ui.DetailsScreen
-import com.example.homework3.screens.instructionDetail.InstructionDetailScreen
-import com.example.homework3.screens.mainScreen.MainScreen
-import com.example.homework3.screens.profileScreen.ui.MyCarsScreen
 
 @Composable
 fun AppTabBar(navController: NavHostController) {
@@ -63,44 +52,5 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 
     companion object {
         fun values(): List<Screen> = listOf(Main, Details, Profile)
-    }
-}
-
-@Composable
-fun NavHostContainer(
-    navController: NavHostController,
-    modifier: Modifier = Modifier
-) {
-    NavHost(
-        navController = navController,
-        startDestination = Screen.Main.route,
-        modifier = modifier
-    ) {
-        composable(Screen.Main.route) {
-            MainScreen(navController = navController, viewModel = MainViewModel())
-        }
-        composable(Screen.Details.route) {
-            DetailsScreen()
-        }
-        composable(Screen.Profile.route) {
-            ProfileScreen(navController = navController)
-        }
-        composable("my_cars") {
-            MyCarsScreen(navController = navController)
-        }
-        composable(
-            route = "instruction/{instructionId}",
-            arguments = listOf(
-                navArgument("instructionId") {
-                    type = NavType.StringType
-                    defaultValue = "1"
-                }
-            )
-        ) { backStackEntry ->
-            InstructionDetailScreen(
-                navController = navController,
-                instructionId = backStackEntry.arguments?.getString("instructionId")
-            )
-        }
     }
 }

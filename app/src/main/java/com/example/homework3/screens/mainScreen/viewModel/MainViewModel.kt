@@ -1,4 +1,3 @@
-// presentation/viewmodel/MainViewModel.kt (упрощенная версия)
 package com.example.homework3.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
