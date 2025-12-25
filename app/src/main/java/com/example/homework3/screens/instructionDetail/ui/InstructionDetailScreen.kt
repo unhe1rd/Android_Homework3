@@ -133,7 +133,7 @@ fun InstructionDetailScreen(
                         instruction = instruction,
                         paddingValues = paddingValues,
                         onStartClick = {
-                            // Начать выполнение инструкции
+                            navController.navigate("toolsRequired/${instruction.id}")
                         }
                     )
                 } ?: run {

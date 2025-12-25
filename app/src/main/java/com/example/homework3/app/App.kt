@@ -12,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.homework3.navigation.NavHostContainer
 import com.example.homework3.screens.tabbarScreen.AppTabBar
-import com.example.homework3.screens.tabbarScreen.NavHostContainer
 import com.example.homework3.screens.tabbarScreen.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
