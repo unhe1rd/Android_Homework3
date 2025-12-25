@@ -17,11 +17,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.example.homework3.ui.layout.Paddings
 import com.example.homework3.ui.layout.Size
 
 @Composable
-fun MainList() {
+fun MainList(navController: NavHostController) {
     val cats = remember { mutableStateListOf<Int>() }
     var isLoading by remember { mutableStateOf(false) }
 
@@ -49,9 +50,7 @@ fun MainList() {
                 }
             }
 
-            MainItemCard(
-                catId = index
-            )
+            MainItemCard(onClick = { navController.navigate("instruction/$index") })
         }
 
         if (isLoading) {

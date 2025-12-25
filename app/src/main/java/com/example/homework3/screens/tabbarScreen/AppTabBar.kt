@@ -13,11 +13,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
 import com.example.homework3.screens.detailsScreen.ProfileScreen
 import com.example.homework3.screens.detailsScreen.ui.DetailsScreen
+import com.example.homework3.screens.instructionDetail.InstructionDetailScreen
 import com.example.homework3.screens.mainScreen.ui.MainScreen
 
 @Composable
@@ -73,13 +76,27 @@ fun NavHostContainer(
         modifier = modifier
     ) {
         composable(Screen.Main.route) {
-            MainScreen()
+            MainScreen(navController = navController)
         }
         composable(Screen.Details.route) {
             DetailsScreen()
         }
         composable(Screen.Profile.route) {
             ProfileScreen()
+        }
+        composable(
+            route = "instruction/{instructionId}",
+            arguments = listOf(
+                navArgument("instructionId") {
+                    type = NavType.StringType
+                    defaultValue = "1"
+                }
+            )
+        ) { backStackEntry ->
+            InstructionDetailScreen(
+                navController = navController,
+                instructionId = backStackEntry.arguments?.getString("instructionId")
+            )
         }
     }
 }

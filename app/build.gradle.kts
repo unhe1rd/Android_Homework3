@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.homework2"
+        applicationId = "com.example.homework3"
         minSdk = 36
         targetSdk = 36
         versionCode = 1

@@ -1,7 +1,7 @@
 package com.example.homework3.viewModel
 
 import android.content.Context
-import com.example.homework2.R
+import com.example.homework3.R
 
 interface  IMainViewModel {
 
