@@ -6,6 +6,7 @@ import androidx.compose.runtime.Stable
 data class Vehicle(
     val id: String,
     val brand: String,
+    val year: Int,
     val licensePlate: String,
     val ptsNumber: String,
     val stsNumber: String,
@@ -21,6 +22,7 @@ data class Vehicle(
                 licensePlate = "",
                 ptsNumber = "",
                 stsNumber = "",
+                year = 0,
                 bodyType = ""
             )
         }

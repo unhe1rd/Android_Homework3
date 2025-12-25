@@ -22,6 +22,7 @@ import com.example.homework2.ui.screen.ProfileScreen
 import com.example.homework3.screens.detailsScreen.ui.DetailsScreen
 import com.example.homework3.screens.instructionDetail.InstructionDetailScreen
 import com.example.homework3.screens.mainScreen.ui.MainScreen
+import com.example.homework3.screens.profileScreen.ui.MyCarsScreen
 
 @Composable
 fun AppTabBar(navController: NavHostController) {
@@ -60,7 +61,6 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
     object Profile : Screen("profile", "Профиль", Icons.Default.Person)
 
     companion object {
-        // Используем values() как в enum
         fun values(): List<Screen> = listOf(Main, Details, Profile)
     }
 }
@@ -82,7 +82,10 @@ fun NavHostContainer(
             DetailsScreen()
         }
         composable(Screen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(navController = navController)
+        }
+        composable("my_cars") {
+            MyCarsScreen(navController = navController)
         }
         composable(
             route = "instruction/{instructionId}",

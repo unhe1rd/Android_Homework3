@@ -59,6 +59,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.homework2.models.ProfileAction
@@ -74,6 +75,7 @@ fun PreviewScreen(){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
+    navController: NavController? = null,
     viewModel: ProfileViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -83,7 +85,21 @@ fun ProfileScreen(
     ) { paddingValues ->
         ProfileContent(
             state = state,
-            onAction = viewModel::onAction,
+            onAction = { action ->
+                when (action) {
+                    is ProfileAction.OpenMyCar -> {
+                        navController?.navigate("my_cars")
+                    }
+                    ProfileAction.ReportBug -> {
+                        // Обработка сообщения о баге
+                    }
+                    ProfileAction.Logout -> {
+                        // Обработка выхода
+                    }
+
+                    else -> {}
+                }
+            },
             modifier = Modifier.padding(paddingValues)
         )
     }

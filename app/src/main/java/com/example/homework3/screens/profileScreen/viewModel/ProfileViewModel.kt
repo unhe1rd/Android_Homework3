@@ -58,13 +58,9 @@ class ProfileViewModel : BaseViewModel<ProfileAction, ProfileState>() {
     }
 
     private fun reportBug() {
-        viewModelScope.launch {
-            // Логика для сообщения о баге
-        }
     }
 
     private fun openMyCar() {
-        // Логика для открытия раздела "Моё авто"
     }
 
     private fun logout() {
