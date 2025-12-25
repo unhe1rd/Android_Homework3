@@ -33,11 +33,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.homework3.R
 import com.example.homework3.layout.Elevations
 import com.example.homework3.layout.Spacers
 import com.example.homework3.screens.profileScreen.models.Vehicle
@@ -56,7 +58,7 @@ fun MyCarsScreen(
     Scaffold(
         topBar = {
             MyCarsTopBar(
-                title = "Мои автомобили",
+                title = stringResource(R.string.my_cars),
                 onBackClick = { navController.popBackStack() }
             )
         },
@@ -65,7 +67,7 @@ fun MyCarsScreen(
                 onClick = { },
                 containerColor = Color(0xFFBAD4FF)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Добавить авто")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_car))
             }
         }
     ) { paddingValues ->
@@ -86,7 +88,7 @@ private fun MyCarsTopBar(
         title = { Text(title) },
         navigationIcon = {
             IconButton(onClick = onBackClick) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Назад")
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
             }
         }
     )
@@ -123,7 +125,7 @@ private fun MyCarsContent(
                 ) {
                     Icon(
                         imageVector = Icons.Default.DirectionsCar,
-                        contentDescription = "Нет авто",
+                        contentDescription = stringResource(R.string.no_car),
                         modifier = Modifier.size(Size.carIconSize),
                         tint = Color.Gray
                     )
