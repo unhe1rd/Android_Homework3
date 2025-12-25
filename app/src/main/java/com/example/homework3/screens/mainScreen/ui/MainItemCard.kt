@@ -21,6 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.homework3.R
+import com.example.homework3.data.model.Instruction
 import com.example.homework3.layout.Elevations
 import com.example.homework3.layout.Spacers
 import com.example.homework3.ui.layout.Paddings

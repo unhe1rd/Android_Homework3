@@ -8,8 +8,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.homework3.R
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.homework3.data.model.ApiResponse
@@ -105,11 +107,11 @@ fun EmptyScreen() {
             verticalArrangement = Arrangement.spacedBy(Spacers.large)
         ) {
             Text(
-                text = "Инструкции не найдены",
+                text = stringResource(R.string.no_instructions),
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = "Попробуйте позже",
+                text = stringResource(R.string.try_later),
                 style = MaterialTheme.typography.bodyMedium
             )
         }
@@ -131,7 +133,7 @@ fun ErrorScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Ошибка загрузки",
+            text = stringResource(R.string.error_contentDescription),
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.error
         )
@@ -143,7 +145,7 @@ fun ErrorScreen(
         )
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onRetry) {
-            Text("Повторить попытку")
+            Text(stringResource(R.string.try_again))
         }
     }
 }

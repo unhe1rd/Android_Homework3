@@ -11,8 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.homework3.R
 
 @Composable
 fun AppTabBar(navController: NavHostController) {
@@ -28,8 +30,8 @@ fun AppTabBar(navController: NavHostController) {
     NavigationBar {
         items.forEach { screen ->
             NavigationBarItem(
-                icon = { Icon(screen.icon, contentDescription = screen.title) },
-                label = { Text(screen.title) },
+                icon = { Icon(screen.icon, contentDescription = stringResource(screen.title)) },
+                label = { Text(stringResource(screen.title)) },
                 selected = currentRoute == screen.route,
                 onClick = {
                     navController.navigate(screen.route) {
@@ -45,10 +47,10 @@ fun AppTabBar(navController: NavHostController) {
     }
 }
 
-sealed class Screen(val route: String, val title: String, val icon: ImageVector) {
-    object Main : Screen("main", "Главная", Icons.Default.Home)
-    object Details : Screen("details", "Мои инструкции", Icons.Default.Email)
-    object Profile : Screen("profile", "Профиль", Icons.Default.Person)
+sealed class Screen(val route: String, val title: Int, val icon: ImageVector) {
+    object Main : Screen("main", R.string.main_screen_title, Icons.Default.Home)
+    object Details : Screen("details", R.string.details_screen_title, Icons.Default.Email)
+    object Profile : Screen("profile", R.string.profile_screen_title, Icons.Default.Person)
 
     companion object {
         fun values(): List<Screen> = listOf(Main, Details, Profile)

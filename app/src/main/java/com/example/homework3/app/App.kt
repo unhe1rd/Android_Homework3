@@ -9,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -21,15 +22,15 @@ import com.example.homework3.screens.tabbarScreen.Screen
 fun App() {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-    val currentTitle = Screen.values().find { it.route == currentRoute }?.title ?: ""
+    val currentTitle = Screen.values().find { it.route == currentRoute }?.title
 
     MaterialTheme {
         Scaffold(
             topBar = {
-                if (currentTitle.isNotEmpty()) {
+                if (currentTitle != null) {
                     CenterAlignedTopAppBar(
                         title = {
-                            Text(currentTitle)
+                            Text(stringResource(currentTitle))
                         },
                         modifier = Modifier.height(80.dp)
                     )
