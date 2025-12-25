@@ -27,6 +27,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,12 +72,11 @@ fun ToolsRequiredScreen(
                 .padding(paddingValues)
                 .background(Color(0xFFF5F5F5))
         ) {
-            // Заголовок
             item {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp, vertical = 24.dp)
+                        .padding(horizontal = Paddings.medlarge, vertical = Paddings.large)
                 ) {
                     Text(
                         text = "Для выполнения работы подготовьте следующие инструменты и материалы:",
@@ -90,29 +91,28 @@ fun ToolsRequiredScreen(
                 MaterialToolCard(item = item, index = index)
             }
 
-            // Примечание
             item {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 16.dp),
+                        .padding(horizontal = Paddings.medium, vertical = Paddings.medium),
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFE3F2FD)
                     ),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(size = 8.dp)
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(Paddings.medium)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            modifier = Modifier.padding(bottom = Paddings.small)
                         ) {
                             Icon(
                                 Icons.Default.Info,
                                 contentDescription = "Информация",
                                 tint = Color(0xFF1976D2),
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(Size.large)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
@@ -131,8 +131,6 @@ fun ToolsRequiredScreen(
                     }
                 }
             }
-
-            // Кнопка "Продолжить"
             item {
                 Button(
                     onClick = {
@@ -140,12 +138,12 @@ fun ToolsRequiredScreen(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 24.dp)
+                        .padding(horizontal = Paddings.medium, vertical = Paddings.medium)
                         .height(56.dp),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color(0xFF4CAF50)
                     ),
-                    shape = RoundedCornerShape(12.dp)
+                    shape = RoundedCornerShape(size = 8.dp)
                 ) {
                     Text(
                         text = "Продолжить",
@@ -154,8 +152,6 @@ fun ToolsRequiredScreen(
                     )
                 }
             }
-
-            // Отступ внизу
             item {
                 Spacer(modifier = Modifier.height(80.dp))
             }
@@ -168,26 +164,24 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = Paddings.medium, vertical = Paddings.small),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         ),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(size= 8.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(Paddings.medium)
         ) {
-            // Верхняя строка с номером и названием
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                // Номер
                 Box(
                     modifier = Modifier
                         .size(40.dp)
@@ -204,8 +198,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                 }
 
                 Spacer(modifier = Modifier.width(16.dp))
-
-                // Название
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
@@ -234,8 +226,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                         )
                     }
                 }
-
-                // Иконка категории
                 Icon(
                     imageVector = item.icon,
                     contentDescription = item.name,
@@ -245,8 +235,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
             }
 
             Spacer(modifier = Modifier.height(12.dp))
-
-            // Категория и статус
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -265,8 +253,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                         labelColor = getCategoryColor(item.category)
                     )
                 )
-
-                // Статус обязательности
                 if (item.isRequired) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
@@ -289,16 +275,12 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
             }
 
             Spacer(modifier = Modifier.height(12.dp))
-
-            // Описание
             Text(
                 text = item.description,
                 fontSize = 15.sp,
                 color = Color(0xFF424242),
                 lineHeight = 22.sp
             )
-
-            // Дополнительная информация
             if (item.details.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Card(
@@ -309,11 +291,11 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Column(
-                        modifier = Modifier.padding(12.dp)
+                        modifier = Modifier.padding(Paddings.medium)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(bottom = 4.dp)
+                            modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         ) {
                             Icon(
                                 Icons.Default.Lightbulb,
@@ -338,8 +320,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                     }
                 }
             }
-
-            // Примеры
             if (item.examples.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(8.dp))
                 Card(
@@ -347,20 +327,20 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
                     colors = CardDefaults.cardColors(
                         containerColor = Color(0xFFE8F5E9).copy(alpha = 0.5f)
                     ),
-                    shape = RoundedCornerShape(8.dp)
+                    shape = RoundedCornerShape(Size.small)
                 ) {
                     Column(
-                        modifier = Modifier.padding(12.dp)
+                        modifier = Modifier.padding(Paddings.medium)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(bottom = 4.dp)
+                            modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         ) {
                             Icon(
                                 Icons.Default.ShoppingCart,
                                 contentDescription = "Примеры",
                                 tint = Color(0xFF388E3C),
-                                modifier = Modifier.size(16.dp)
+                                modifier = Modifier.size(Size.medium)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
@@ -382,8 +362,6 @@ fun MaterialToolCard(item: MaterialToolItem, index: Int) {
         }
     }
 }
-
-// Модель данных для материалов и инструментов
 data class MaterialToolItem(
     val id: Int,
     val name: String,
@@ -395,20 +373,17 @@ data class MaterialToolItem(
     val icon: androidx.compose.ui.graphics.vector.ImageVector,
     val isRequired: Boolean = true
 )
-
-// Функция получения цвета по категории
 private fun getCategoryColor(category: String): Color {
     return when (category) {
-        "Масло" -> Color(0xFF1976D2) // Синий
-        "Фильтр" -> Color(0xFFD32F2F) // Красный
-        "Прокладка" -> Color(0xFF7B1FA2) // Фиолетовый
-        "Инструмент" -> Color(0xFFF57C00) // Оранжевый
-        "Расходный" -> Color(0xFF388E3C) // Зеленый
-        else -> Color(0xFF757575) // Серый
+        "Масло" -> Color(0xFF1976D2)
+        "Фильтр" -> Color(0xFFD32F2F)
+        "Прокладка" -> Color(0xFF7B1FA2)
+        "Инструмент" -> Color(0xFFF57C00)
+        "Расходный" -> Color(0xFF388E3C)
+        else -> Color(0xFF757575)
     }
 }
 
-// Функция получения материалов для замены масла
 private fun getMaterialsForOilChange(): List<MaterialToolItem> {
     return listOf(
         MaterialToolItem(
@@ -469,7 +444,7 @@ private fun getMaterialsForOilChange(): List<MaterialToolItem> {
         MaterialToolItem(
             id = 6,
             name = "Вороток, трещотка, удлинитель",
-            quantity = "комплект",
+            quantity = "Комплект",
             description = "Для удобного откручивания сливной пробки и фильтра",
             details = "Рекомендуется набор инструментов 1/2 дюйма",
             examples = "",
@@ -491,7 +466,7 @@ private fun getMaterialsForOilChange(): List<MaterialToolItem> {
         MaterialToolItem(
             id = 8,
             name = "Перчатки защитные",
-            quantity = "пара",
+            quantity = "1 пара",
             description = "Резиновые или нитриловые перчатки для защиты рук от масла",
             details = "Рекомендуются нитриловые перчатки, они более стойкие к маслам",
             examples = "",

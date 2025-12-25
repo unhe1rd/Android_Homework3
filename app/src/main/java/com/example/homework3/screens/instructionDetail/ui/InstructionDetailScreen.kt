@@ -23,8 +23,10 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.example.homework3.data.model.ApiResponse
+import com.example.homework3.layout.Spacers
 import com.example.homework3.presentation.viewmodel.InstructionDetailViewModel
 import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -168,8 +170,10 @@ fun InstructionDetailContent(
             contentDescription = "Изображение инструкции",
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp)
-                .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)),
+                .height(Size.instructionImageHeight)
+                .clip(RoundedCornerShape(
+                    bottomStart = Size.instructionRoundedCornerImageSize,
+                    bottomEnd = Size.instructionRoundedCornerImageSize)),
             contentScale = ContentScale.Crop
         )
 
@@ -213,13 +217,13 @@ fun InstructionDetailContent(
 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        horizontalArrangement = Arrangement.spacedBy(Spacers.small)
                     ) {
                         repeat(instruction.difficulty) {
                             Icon(
                                 Icons.Default.Star,
                                 contentDescription = null,
-                                modifier = Modifier.size(24.dp),
+                                modifier = Modifier.size(Size.mediumIconSize),
                                 tint = Color(0xFFFFA000)
                             )
                         }
@@ -227,12 +231,12 @@ fun InstructionDetailContent(
                             Icon(
                                 Icons.Default.Star,
                                 contentDescription = null,
-                                modifier = Modifier.size(24.dp),
+                                modifier = Modifier.size(Size.mediumIconSize),
                                 tint = MaterialTheme.colorScheme.outline
                             )
                         }
 
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(Spacers.small))
 
                         Text(
                             text = "${instruction.difficulty}/5 ${getDifficultyText(instruction.difficulty)}",
@@ -243,7 +247,6 @@ fun InstructionDetailContent(
                 }
             }
 
-            // Описание инструкции
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(
@@ -266,7 +269,6 @@ fun InstructionDetailContent(
                         lineHeight = 24.sp
                     )
 
-                    // Показываем шаги инструкции
                     instruction.steps.forEach { step ->
                         Spacer(modifier = Modifier.height(Paddings.medium))
                         Text(
@@ -283,7 +285,6 @@ fun InstructionDetailContent(
                 }
             }
 
-            // Блок с временем и инструментами
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(Paddings.medium)
@@ -301,7 +302,7 @@ fun InstructionDetailContent(
                         Text(
                             text = "⏱️",
                             fontSize = 24.sp,
-                            modifier = Modifier.padding(bottom = 4.dp)
+                            modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         )
                         Text(
                             text = "Время",
@@ -328,7 +329,7 @@ fun InstructionDetailContent(
                         Text(
                             text = "🔧",
                             fontSize = 24.sp,
-                            modifier = Modifier.padding(bottom = 4.dp)
+                            modifier = Modifier.padding(bottom = Paddings.extraSmall)
                         )
                         Text(
                             text = "Инструменты",
@@ -348,7 +349,7 @@ fun InstructionDetailContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = Paddings.large),
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(Size.buttonRoundedCornerSize),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 )
@@ -356,7 +357,7 @@ fun InstructionDetailContent(
                 Text(
                     text = "Начать выполнение",
                     style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                    modifier = Modifier.padding(vertical = 12.dp)
+                    modifier = Modifier.padding(vertical = Paddings.base)
                 )
             }
         }
