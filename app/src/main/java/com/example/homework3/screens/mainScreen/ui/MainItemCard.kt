@@ -50,12 +50,10 @@ fun MainItemCard(
                 .padding(Paddings.medium),
             horizontalArrangement = Arrangement.spacedBy(Paddings.medium)
         ) {
-            // Левая часть - текстовая информация
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(Paddings.small)
             ) {
-                // Заголовок
                 Text(
                     text = title,
                     style = MaterialTheme.typography.headlineSmall.copy(
@@ -66,8 +64,6 @@ fun MainItemCard(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-
-                // Описание
                 Text(
                     text = subtitle,
                     style = MaterialTheme.typography.bodyMedium,
@@ -75,8 +71,6 @@ fun MainItemCard(
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis
                 )
-
-                // Разделитель
                 HorizontalDivider(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -84,14 +78,11 @@ fun MainItemCard(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
                 )
-
-                // Нижняя часть с сложностью и кнопкой избранного
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Блок сложности
                     Column {
                         Text(
                             text = "Сложность:",
@@ -99,8 +90,6 @@ fun MainItemCard(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 12.sp
                         )
-
-                        // Звездочки сложности
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically
@@ -110,7 +99,7 @@ fun MainItemCard(
                                     imageVector = Icons.Default.Star,
                                     contentDescription = "Сложность",
                                     modifier = Modifier.size(16.dp),
-                                    tint = Color(0xFFFFA000) // Оранжевый цвет для звезд
+                                    tint = Color(0xFFFFA000)
                                 )
                             }
                             repeat(maxDifficulty - difficulty) {
@@ -121,7 +110,6 @@ fun MainItemCard(
                                     tint = MaterialTheme.colorScheme.outline
                                 )
                             }
-
                             Spacer(modifier = Modifier.width(4.dp))
                         }
                     }
