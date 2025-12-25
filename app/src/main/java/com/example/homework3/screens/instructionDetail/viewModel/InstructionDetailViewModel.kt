@@ -1,5 +1,6 @@
 package com.example.homework3.presentation.viewmodel
 
+import android.os.Environment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.homework3.data.model.ApiResponse
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.io.File
 
 class InstructionDetailViewModel : ViewModel() {
 
@@ -41,6 +43,21 @@ class InstructionDetailViewModel : ViewModel() {
                 }
             }
         }
+    }
+
+    fun saveFile(content: Instruction) {
+        val stepsString = content.steps.forEach {
+            it.description + " "
+        }
+        val text: String = content.difficulty.toString() + content.description.toString() + stepsString
+
+        val file = File(Environment.getExternalStorageDirectory(), "output.txt")
+
+        if (!file.exists()) {
+            file.createNewFile()
+        }
+
+        file.writeText(text = text)
     }
 
     fun clearInstruction() {

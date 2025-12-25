@@ -12,8 +12,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.homework3"
-        minSdk = 36
-        targetSdk = 36
+        minSdk = 25
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

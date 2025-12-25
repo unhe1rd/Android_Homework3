@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.homework3.R
 import com.example.homework3.data.model.ApiResponse
@@ -29,6 +30,8 @@ import com.example.homework3.layout.Spacers
 import com.example.homework3.presentation.viewmodel.InstructionDetailViewModel
 import com.example.homework3.ui.layout.Paddings
 import com.example.homework3.ui.layout.Size
+
+// выгрузить содержимое экрана в текстовый файлик
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -358,6 +361,23 @@ fun InstructionDetailContent(
             ) {
                 Text(
                     text = stringResource(R.string.start_instruction),
+                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                    modifier = Modifier.padding(vertical = Paddings.base)
+                )
+            }
+
+            Button(
+                onClick = { InstructionDetailViewModel().saveFile(instruction) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = Paddings.large),
+                shape = RoundedCornerShape(Size.buttonRoundedCornerSize),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                )
+            ) {
+                Text(
+                    text = "Сохранить инструкцию в .txt",
                     style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(vertical = Paddings.base)
                 )
