@@ -18,7 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
-import com.example.homework2.ui.screen.ProfileScreen
+import com.example.homework3.screens.profileScreen.ui.ProfileScreen
 import com.example.homework3.presentation.viewmodel.MainViewModel
 import com.example.homework3.screens.detailsScreen.ui.DetailsScreen
 import com.example.homework3.screens.instructionDetail.InstructionDetailScreen

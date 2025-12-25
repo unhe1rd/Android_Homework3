@@ -1,7 +1,6 @@
-package com.example.homework2.ui.screen
+package com.example.homework3.screens.profileScreen.ui
 
 import androidx.compose.foundation.BorderStroke
-import com.example.homework2.viewModel.*
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,8 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.ExitToApp
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.ListAlt
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -36,11 +33,8 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -61,9 +55,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.homework2.models.ProfileAction
-import com.example.homework2.models.ProfileState
-import com.example.homework2.models.UserProfile
+import com.example.homework3.screens.profileScreen.models.ProfileAction
+import com.example.homework3.screens.profileScreen.models.ProfileState
+import com.example.homework3.screens.profileScreen.models.UserProfile
+import com.example.homework3.screens.profileScreen.viewModel.ProfileViewModel
 
 @Composable
 @Preview
@@ -90,10 +85,8 @@ fun ProfileScreen(
                         navController?.navigate("my_cars")
                     }
                     ProfileAction.ReportBug -> {
-                        // Обработка сообщения о баге
                     }
                     ProfileAction.Logout -> {
-                        // Обработка выхода
                     }
 
                     else -> {}
@@ -112,7 +105,6 @@ private fun ProfileContent(
 ) {
     var profileImageUri by remember { mutableStateOf<Uri?>(null) }
 
-    // Лончер для выбора изображения из галереи
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -135,24 +127,21 @@ private fun ProfileContent(
                 color = MaterialTheme.colorScheme.error
             )
         } else {
-            // Круглое изображение профиля
             ProfileImage(
                 imageUri = profileImageUri,
                 onClick = {
-                    // Открываем галерею для выбора фото
                     imagePickerLauncher.launch("image/*")
                 }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Основной контейнер с закругленными краями и цветом #BAD4FF
             Card(
                 modifier = Modifier
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFBAD4FF), // #BAD4FF
+                    containerColor = Color(0xFFBAD4FF),
                     contentColor = MaterialTheme.colorScheme.onSurface
                 ),
                 elevation = CardDefaults.cardElevation(4.dp)
@@ -161,7 +150,6 @@ private fun ProfileContent(
                     modifier = Modifier.padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Приветствие
                     Text(
                         text = "Добро пожаловать,",
                         style = MaterialTheme.typography.titleLarge,
@@ -177,12 +165,10 @@ private fun ProfileContent(
                         modifier = Modifier.padding(bottom = 24.dp)
                     )
 
-                    // Информация о пользователе в отдельном карточке
                     ProfileInfoCard(state.userProfile)
 
                     Spacer(modifier = Modifier.height(32.dp))
 
-                    // Действия профиля
                     ProfileActions(onAction)
                 }
             }
@@ -209,7 +195,6 @@ private fun ProfileImage(
         contentAlignment = Alignment.Center
     ) {
         if (imageUri != null) {
-            // Показываем выбранное изображение
             Image(
                 painter = rememberAsyncImagePainter(
                     ImageRequest.Builder(LocalContext.current)
@@ -223,7 +208,6 @@ private fun ProfileImage(
                 contentScale = ContentScale.Crop
             )
         } else {
-            // Иконка профиля по умолчанию
             Icon(
                 imageVector = Icons.Default.Person,
                 contentDescription = "Добавить фото",
@@ -299,21 +283,18 @@ private fun ProfileActions(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        // Моё авто
         ProfileActionButton(
             text = "Моё авто",
             icon = Icons.Default.DirectionsCar,
             onClick = { onAction(ProfileAction.OpenMyCar) }
         )
 
-        // Сообщить о баге
         ProfileActionButton(
             text = "Сообщить о баге",
             icon = Icons.Default.BugReport,
             onClick = { onAction(ProfileAction.ReportBug) }
         )
 
-        // Выйти из аккаунта
         ProfileActionButton(
             text = "Выйти из аккаунта",
             icon = Icons.Default.ExitToApp,

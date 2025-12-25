@@ -1,4 +1,4 @@
-package com.example.homework2.models
+package com.example.homework3.screens.profileScreen.models
 
 import androidx.compose.runtime.Stable
 
@@ -14,7 +14,6 @@ data class UserProfile(
     val email: String? = null
 )
 
-// Состояние экрана
 @Stable
 data class ProfileState(
     val userProfile: UserProfile? = null,
@@ -22,11 +21,9 @@ data class ProfileState(
     val errorMessage: String? = null
 ) : State
 
-// Действия
 sealed class ProfileAction : Action {
     object LoadProfile : ProfileAction()
     object ReportBug : ProfileAction()
     object OpenMyCar : ProfileAction()
     object Logout : ProfileAction()
-    data class NavigateTo(val destination: String) : ProfileAction()
 }
