@@ -27,7 +27,6 @@
     <string name="instructionsDetailTitle">Детальная инструкции</string>
     <string name="my_cars">Мои автомобили</string>
     <string name="add_car">Добавить авто</string>
-    <string name="back">Назад</string>
     <string name="no_car">Нет авто</string>
 
 </resources>
