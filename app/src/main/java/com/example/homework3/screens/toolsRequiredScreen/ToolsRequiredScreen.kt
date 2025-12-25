@@ -27,15 +27,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.wear.compose.material.Chip
-import androidx.wear.compose.material.ChipDefaults
-import com.example.homework3.data.model.ToolItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ToolsRequiredScreen(
     navController: NavController,
-    instructionId: String
+    instructionId: String?
 ) {
     val tools = remember(instructionId) { getMaterialsForOilChange() }
 
