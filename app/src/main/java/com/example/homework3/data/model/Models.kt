@@ -26,3 +26,11 @@ sealed class ApiResponse<T> {
     data class Error<T>(val message: String) : ApiResponse<T>()
     data class Loading<T>(val isLoading: Boolean) : ApiResponse<T>()
 }
+
+data class ToolItem(
+    val id: Int,
+    val name: String,
+    val description: String,
+    val quantity: String = "",
+    val isRequired: Boolean = true
+)
