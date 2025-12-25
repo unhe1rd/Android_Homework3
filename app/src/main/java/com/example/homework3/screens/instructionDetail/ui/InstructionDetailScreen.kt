@@ -163,7 +163,6 @@ fun InstructionDetailContent(
             .padding(paddingValues)
             .verticalScroll(rememberScrollState())
     ) {
-        // Изображение инструкции
         Image(
             painter = painterResource(id = instruction.imageResId),
             contentDescription = "Изображение инструкции",
@@ -178,28 +177,24 @@ fun InstructionDetailContent(
             modifier = Modifier.padding(Paddings.large),
             verticalArrangement = Arrangement.spacedBy(Paddings.medium)
         ) {
-            // Заголовок
             Text(
                 text = instruction.title,
                 style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
                 color = MaterialTheme.colorScheme.primary
             )
 
-            // Подзаголовок
             Text(
                 text = instruction.subtitle,
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            // Разделитель
             Divider(
                 modifier = Modifier.padding(vertical = Paddings.medium),
                 thickness = 2.dp,
                 color = MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)
             )
 
-            // Блок сложности
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(
@@ -348,7 +343,6 @@ fun InstructionDetailContent(
                 }
             }
 
-            // Кнопка начала работы
             Button(
                 onClick = onStartClick,
                 modifier = Modifier
