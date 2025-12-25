@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.dp
 object Size {
 
     val baseCornerRadius = 16.dp
-    val iconSize = 48.dp
+    val mediumIconSize = 24.dp
     val heartSize = 24.dp
     val loaderSize = 80.dp
     val minImageSize = 250.dp
@@ -27,4 +27,5 @@ object Size {
     val itemCardIconSize = 16.dp
 
     val instructionImageHeight = 250.dp
+    val instructionRoundedCornerImageSize = 16.dp
 }
