@@ -8,4 +8,9 @@
     <string name="main_screen_title">Главная</string>
     <string name="details_screen_title">Мои инструкции</string>
     <string name="profile_screen_title">Профиль</string>
+    <string name="my_cars">Мои автомобили</string>
+    <string name="add_car">Добавить авто</string>
+    <string name="back">Назад</string>
+    <string name="no_car">Нет авто</string>
+
 </resources>
