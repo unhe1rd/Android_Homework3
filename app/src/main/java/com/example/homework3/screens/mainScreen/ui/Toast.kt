@@ -1,4 +1,4 @@
-package com.example.homework2.ui
+package com.example.homework3.ui
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable

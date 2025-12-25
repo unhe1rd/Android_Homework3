@@ -1,4 +1,4 @@
-package com.example.homework2.ui
+package com.example.homework3.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,13 +22,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.homework2.R
-import com.example.homework2.ui.layout.Paddings
-import com.example.homework2.ui.layout.Size
-import com.example.homework2.viewModel.CatViewModel
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
+import com.example.homework3.viewModel.MainViewModel
 
 @Composable
 fun MainItemCard(catId: Int) {
-    val viewModel = CatViewModel()
+    val viewModel = MainViewModel()
 
     Card(
         modifier = Modifier

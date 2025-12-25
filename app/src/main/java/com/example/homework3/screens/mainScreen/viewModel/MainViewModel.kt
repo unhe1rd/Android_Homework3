@@ -1,16 +1,16 @@
-package com.example.homework2.viewModel
+package com.example.homework3.viewModel
 
 import android.content.Context
 import com.example.homework2.R
 
-interface  ICatViewModel {
+interface  IMainViewModel {
 
     val imageUrlId: Int
     val catMessageIds: List<Int>
     fun onCatImageViewClicked(context: Context, catId: Int, showToast: (String) -> Unit)
 }
 
-class CatViewModel: ICatViewModel {
+class MainViewModel: IMainViewModel {
 
     override val imageUrlId = R.string.imageUrl
     override val catMessageIds = listOf(

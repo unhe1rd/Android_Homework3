@@ -1,4 +1,4 @@
-package com.example.homework2.ui
+package com.example.homework3.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -30,13 +30,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.SubcomposeAsyncImage
 import com.example.homework2.R
-import com.example.homework2.ui.layout.Paddings
-import com.example.homework2.ui.layout.Size
-import com.example.homework2.viewModel.ICatViewModel
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
+import com.example.homework3.viewModel.IMainViewModel
 
 
 @Composable
-fun MainImageView(catId: Int, viewModel: ICatViewModel) {
+fun MainImageView(catId: Int, viewModel: IMainViewModel) {
 
     var imageKey by remember(catId) { mutableStateOf(catId) }
 

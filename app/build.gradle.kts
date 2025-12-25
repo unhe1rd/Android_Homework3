@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.homework2"
+    namespace = "com.example.homework3"
     compileSdk {
         version = release(36)
     }
@@ -55,6 +55,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:1.5.4")
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -1,4 +1,4 @@
-package com.example.homework2.ui
+package com.example.homework3.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,8 +17,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.homework2.ui.layout.Paddings
-import com.example.homework2.ui.layout.Size
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
 
 @Composable
 fun MainList() {

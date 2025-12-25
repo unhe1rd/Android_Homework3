@@ -1,6 +1,4 @@
-package com.example.homework2.ui.layout
-
-import androidx.compose.ui.unit.dp
+package com.example.homework3.ui.layout
 
 import androidx.compose.ui.unit.dp
 

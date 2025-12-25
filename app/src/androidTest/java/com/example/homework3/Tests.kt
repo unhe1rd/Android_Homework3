@@ -1,10 +1,10 @@
-package com.example.homework2
+package com.example.homework3
 
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.homework2.ui.layout.Paddings
-import com.example.homework2.ui.layout.Size
-import com.example.homework2.viewModel.CatViewModel
+import com.example.homework3.ui.layout.Paddings
+import com.example.homework3.ui.layout.Size
+import com.example.homework3.viewModel.CatViewModel
 
 import org.junit.Test
 import org.junit.runner.RunWith
