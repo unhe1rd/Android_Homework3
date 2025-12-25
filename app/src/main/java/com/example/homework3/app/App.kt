@@ -21,17 +21,19 @@ import com.example.homework3.screens.tabbarScreen.Screen
 fun App() {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-    val currentTitle = Screen.values().find { it.route == currentRoute }?.title ?: "Главная"
+    val currentTitle = Screen.values().find { it.route == currentRoute }?.title ?: ""
 
     MaterialTheme {
         Scaffold(
             topBar = {
-                CenterAlignedTopAppBar(
-                    title = {
-                        Text(currentTitle)
-                    },
-                    modifier = Modifier.height(80.dp)
-                )
+                if (currentTitle.isNotEmpty()) {
+                    CenterAlignedTopAppBar(
+                        title = {
+                            Text(currentTitle)
+                        },
+                        modifier = Modifier.height(80.dp)
+                    )
+                }
             },
             bottomBar = {
                 AppTabBar(navController)

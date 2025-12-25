@@ -22,9 +22,8 @@ import com.example.homework2.ui.screen.ProfileScreen
 import com.example.homework3.presentation.viewmodel.MainViewModel
 import com.example.homework3.screens.detailsScreen.ui.DetailsScreen
 import com.example.homework3.screens.instructionDetail.InstructionDetailScreen
-import com.example.homework3.screens.mainScreen.ui.MainScreen
-import com.example.homework3.screens.profileScreen.ui.MyCarsScreen
 import com.example.homework3.screens.mainScreen.MainScreen
+import com.example.homework3.screens.profileScreen.ui.MyCarsScreen
 
 @Composable
 fun AppTabBar(navController: NavHostController) {
