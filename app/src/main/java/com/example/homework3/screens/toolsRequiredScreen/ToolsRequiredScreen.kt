@@ -1,5 +1,6 @@
 package com.example.homework3.screens.detailsScreen.ui
 
+import android.provider.MediaStore
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,12 +24,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.homework3.ui.layout.Paddings
 import com.example.homework3.ui.layout.Size
+import com.example.homework3.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,7 +46,7 @@ fun ToolsRequiredScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Что понадобится",
+                        text = stringResource(R.string.instruction_list),
                         fontSize = 28.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF212121)
@@ -55,7 +58,7 @@ fun ToolsRequiredScreen(
                     ) {
                         Icon(
                             Icons.Default.ArrowBack,
-                            contentDescription = "Назад",
+                            contentDescription = R.string.back,
                             tint = Color(0xFF212121)
                         )
                     }
@@ -79,7 +82,7 @@ fun ToolsRequiredScreen(
                         .padding(horizontal = Paddings.medlarge, vertical = Paddings.large)
                 ) {
                     Text(
-                        text = "Для выполнения работы подготовьте следующие инструменты и материалы:",
+                        text = R.string.list_need,
                         fontSize = 16.sp,
                         color = Color(0xFF757575),
                         lineHeight = 24.sp
@@ -110,20 +113,20 @@ fun ToolsRequiredScreen(
                         ) {
                             Icon(
                                 Icons.Default.Info,
-                                contentDescription = "Информация",
+                                contentDescription = R.string.info,
                                 tint = Color(0xFF1976D2),
                                 modifier = Modifier.size(Size.large)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Рекомендации:",
+                                text = R.string.recs,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color(0xFF1976D2)
                             )
                         }
                         Text(
-                            text = "Все материалы должны соответствовать спецификации BMW Longlife-01 или Longlife-04. Проверьте артикулы перед покупкой.",
+                            text = R.string.warning,
                             fontSize = 14.sp,
                             color = Color(0xFF424242),
                             lineHeight = 20.sp
@@ -146,7 +149,7 @@ fun ToolsRequiredScreen(
                     shape = RoundedCornerShape(size = 8.dp)
                 ) {
                     Text(
-                        text = "Продолжить",
+                        text = R.string.continued,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold
                     )

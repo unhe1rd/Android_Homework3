@@ -29,4 +29,10 @@
     <string name="add_car">Добавить авто</string>
     <string name="no_car">Нет авто</string>
 
+    <string name="instruction_list">Что понадобится</string>
+    <string name="info">Информация</string>
+    <string name="recs">Рекомендации:</string>
+    <string name="continued">Продолжить</string>
+    <string name="warning">Все материалы должны соответствовать спецификации BMW Longlife-01 или Longlife-04. Проверьте артикулы перед покупкой.</string>
+    <string name="list_need">Для выполнения работы подготовьте следующие инструменты и материалы:</string>
 </resources>
