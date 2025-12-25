@@ -2,6 +2,7 @@ package com.example.homework3.screens.profileScreen.ui
 
 import androidx.compose.foundation.BorderStroke
 import android.net.Uri
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -73,6 +74,7 @@ fun ProfileScreen(
     viewModel: ProfileViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val context = LocalContext.current
 
     Scaffold(
 
@@ -85,6 +87,11 @@ fun ProfileScreen(
                         navController?.navigate("my_cars")
                     }
                     ProfileAction.ReportBug -> {
+                        Toast.makeText(
+                            context,
+                            "Багуля \uD83E\uDEB3",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                     ProfileAction.Logout -> {
                     }
