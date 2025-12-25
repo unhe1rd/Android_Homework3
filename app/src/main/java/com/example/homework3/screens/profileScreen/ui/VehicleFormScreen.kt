@@ -48,6 +48,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.homework2.models.VehicleFormAction
+import com.example.homework2.models.VehicleFormState
+import com.example.homework2.viewModel.VehicleFormViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
