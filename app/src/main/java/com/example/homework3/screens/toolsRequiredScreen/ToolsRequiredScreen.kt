@@ -58,7 +58,7 @@ fun ToolsRequiredScreen(
                     ) {
                         Icon(
                             Icons.Default.ArrowBack,
-                            contentDescription = R.string.back,
+                            contentDescription = stringResource(R.string.back),
                             tint = Color(0xFF212121)
                         )
                     }
@@ -82,7 +82,7 @@ fun ToolsRequiredScreen(
                         .padding(horizontal = Paddings.medlarge, vertical = Paddings.large)
                 ) {
                     Text(
-                        text = R.string.list_need,
+                        text = stringResource(R.string.list_need),
                         fontSize = 16.sp,
                         color = Color(0xFF757575),
                         lineHeight = 24.sp
@@ -113,20 +113,20 @@ fun ToolsRequiredScreen(
                         ) {
                             Icon(
                                 Icons.Default.Info,
-                                contentDescription = R.string.info,
+                                contentDescription = stringResource(R.string.info),
                                 tint = Color(0xFF1976D2),
                                 modifier = Modifier.size(Size.large)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = R.string.recs,
+                                text = stringResource(R.string.recs),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color(0xFF1976D2)
                             )
                         }
                         Text(
-                            text = R.string.warning,
+                            text = stringResource(R.string.warning),
                             fontSize = 14.sp,
                             color = Color(0xFF424242),
                             lineHeight = 20.sp
@@ -149,7 +149,7 @@ fun ToolsRequiredScreen(
                     shape = RoundedCornerShape(size = 8.dp)
                 ) {
                     Text(
-                        text = R.string.continued,
+                        text = stringResource(R.string.continued),
                         fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold
                     )
