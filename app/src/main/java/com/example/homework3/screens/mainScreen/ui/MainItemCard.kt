@@ -131,14 +131,14 @@ fun MainItemCard(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .clip(RoundedCornerShape(Size.baseCornerRadius - 4.dp))
                     .background(MaterialTheme.colorScheme.surfaceVariant)
             ) {
                 Image(
                     painter = painterResource(id = imageResId),
                     contentDescription = "Изображение инструкции",
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.aspectRatio(1f),
                     contentScale = ContentScale.Crop
                 )
             }

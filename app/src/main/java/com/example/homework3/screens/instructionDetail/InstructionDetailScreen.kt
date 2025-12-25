@@ -32,8 +32,7 @@ fun InstructionDetailScreen(
     navController: NavHostController,
     instructionId: String? = "1"
 ) {
-    var isFavorite by remember { mutableStateOf(false) }
-    val difficulty = 2 // Можно передавать как параметр
+    val difficulty = 2
 
     Scaffold(
         topBar = {
@@ -49,15 +48,6 @@ fun InstructionDetailScreen(
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Назад"
-                        )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { isFavorite = !isFavorite }) {
-                        Icon(
-                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                            contentDescription = "Избранное",
-                            tint = if (isFavorite) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
                         )
                     }
                 }

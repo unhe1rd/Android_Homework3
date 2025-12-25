@@ -1,38 +1,67 @@
-package com.example.homework3.viewModel
+// presentation/viewmodel/MainViewModel.kt (упрощенная версия)
+package com.example.homework3.presentation.viewmodel
 
-import android.content.Context
-import com.example.homework3.R
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.homework3.data.model.ApiResponse
+import com.example.homework3.data.model.Instruction
+import com.example.homework3.data.networkService.MockNetworkService
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
-interface  IMainViewModel {
+class MainViewModel : ViewModel() {
 
-    val imageUrlId: Int
-    val catMessageIds: List<Int>
-    fun onCatImageViewClicked(context: Context, catId: Int, showToast: (String) -> Unit)
-}
+    private val networkService = MockNetworkService()
 
-class MainViewModel: IMainViewModel {
+    private val _instructions = MutableStateFlow<ApiResponse<List<Instruction>>>(ApiResponse.Loading(true))
+    val instructions: StateFlow<ApiResponse<List<Instruction>>> = _instructions.asStateFlow()
 
-    override val imageUrlId = R.string.imageUrl
-    override val catMessageIds = listOf(
-        R.string.catMessage_1,
-        R.string.catMessage_2,
-        R.string.catMessage_3,
-        R.string.catMessage_4,
-        R.string.catMessage_5,
-        R.string.catMessage_6,
-        R.string.catMessage_7,
-        R.string.catMessage_8,
-        R.string.catMessage_9,
-        R.string.catMessage_10,
-    )
+    private val _selectedInstruction = MutableStateFlow<Instruction?>(null)
+    val selectedInstruction: StateFlow<Instruction?> = _selectedInstruction.asStateFlow()
 
-    override fun onCatImageViewClicked(
-        context: Context,
-        catId: Int,
-        showToast: (String) -> Unit
-    ) {
-        val messageId = catMessageIds.random()
-        val message = context.getString(messageId)
-        showToast("Котик #$catId: $message")
+    init {
+        loadInstructions()
+    }
+
+    fun loadInstructions() {
+        viewModelScope.launch {
+            _instructions.value = ApiResponse.Loading(true)
+            _instructions.value = networkService.getAllInstructions()
+        }
+    }
+
+    fun getInstructionById(id: String) {
+        viewModelScope.launch {
+            _selectedInstruction.value = null
+            when (val response = networkService.getInstructionById(id)) {
+                is ApiResponse.Success -> {
+                    _selectedInstruction.value = response.data
+                }
+                is ApiResponse.Error -> {
+                    // Обработка ошибки
+                }
+                else -> {}
+            }
+        }
+    }
+
+    fun toggleFavorite(instructionId: String, currentState: Boolean) {
+        viewModelScope.launch {
+            networkService.toggleFavorite(instructionId, !currentState)
+            // Обновляем локальное состояние
+            if (_instructions.value is ApiResponse.Success) {
+                val currentList = (_instructions.value as ApiResponse.Success).data
+                val updatedList = currentList.map { instruction ->
+                    if (instruction.id == instructionId) {
+                        instruction.copy(isFavorite = !currentState)
+                    } else {
+                        instruction
+                    }
+                }
+                _instructions.value = ApiResponse.Success(updatedList)
+            }
+        }
     }
 }

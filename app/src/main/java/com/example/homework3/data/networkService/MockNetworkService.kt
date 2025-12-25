@@ -8,12 +8,10 @@ import com.example.homework3.R
 
 class MockNetworkService {
 
-    // Имитация сетевой задержки
     private suspend fun simulateNetworkDelay() {
         delay(1000) // Задержка 1 секунда
     }
 
-    // Получить все инструкции
     suspend fun getAllInstructions(): ApiResponse<List<Instruction>> {
         return try {
             simulateNetworkDelay()
@@ -23,7 +21,6 @@ class MockNetworkService {
         }
     }
 
-    // Получить инструкцию по ID
     suspend fun getInstructionById(id: String): ApiResponse<Instruction> {
         return try {
             simulateNetworkDelay()
@@ -38,7 +35,6 @@ class MockNetworkService {
         }
     }
 
-    // Получить избранные инструкции
     suspend fun getFavoriteInstructions(): ApiResponse<List<Instruction>> {
         return try {
             simulateNetworkDelay()
@@ -49,7 +45,6 @@ class MockNetworkService {
         }
     }
 
-    // Поиск инструкций
     suspend fun searchInstructions(query: String): ApiResponse<List<Instruction>> {
         return try {
             simulateNetworkDelay()
@@ -64,7 +59,6 @@ class MockNetworkService {
         }
     }
 
-    // Добавить в избранное
     suspend fun toggleFavorite(instructionId: String, isFavorite: Boolean): ApiResponse<Boolean> {
         return try {
             simulateNetworkDelay()
@@ -75,7 +69,6 @@ class MockNetworkService {
         }
     }
 
-    // Моковые данные
     private val mockInstructions = listOf(
         Instruction(
             id = "1",
@@ -129,7 +122,7 @@ class MockNetworkService {
                 InstructionStep(3, "Установка нового", "Установите новый фильтр"),
                 InstructionStep(4, "Закрытие крышки", "Закройте крышку воздушного фильтра")
             ),
-            imageResId = R.drawable.ic_launcher_foreground, // R.drawable.air_filter
+            imageResId = R.drawable.air_filter,
             category = "Двигатель"
         ),
         Instruction(
@@ -147,7 +140,7 @@ class MockNetworkService {
                 InstructionStep(4, "Проверка дисков", "Проверьте состояние тормозных дисков"),
                 InstructionStep(5, "Установка колеса", "Установите колесо обратно")
             ),
-            imageResId = R.drawable.ic_launcher_foreground, // R.drawable.brakes
+            imageResId = R.drawable.brakes,
             category = "Тормоза",
             isFavorite = true
         ),
@@ -165,7 +158,7 @@ class MockNetworkService {
                 InstructionStep(3, "Установка новых", "Установите новые свечи с правильным моментом затяжки"),
                 InstructionStep(4, "Подключение проводов", "Подключите высоковольтные провода")
             ),
-            imageResId = R.drawable.ic_launcher_foreground, // R.drawable.spark_plugs
+            imageResId = R.drawable.spark_plugs,
             category = "Двигатель"
         ),
         Instruction(
@@ -182,7 +175,7 @@ class MockNetworkService {
                 InstructionStep(3, "Замена лампы", "Замените лампу, не касаясь стеклянной части"),
                 InstructionStep(4, "Проверка", "Проверьте работу новой лампы")
             ),
-            imageResId = R.drawable.ic_launcher_foreground, // R.drawable.headlight
+            imageResId = R.drawable.headlight,
             category = "Электрика"
         ),
         Instruction(
@@ -200,11 +193,8 @@ class MockNetworkService {
                 InstructionStep(4, "Установка нового", "Установите новый аккумулятор"),
                 InstructionStep(5, "Подключение клемм", "Подключите сначала плюсовую, затем минусовую клемму")
             ),
-            imageResId = R.drawable.ic_launcher_foreground, // R.drawable.battery
+            imageResId = R.drawable.battery,
             category = "Электрика"
         )
     )
 }
-
-// Синоним для удобства
-typealias NetworkService = MockNetworkService
