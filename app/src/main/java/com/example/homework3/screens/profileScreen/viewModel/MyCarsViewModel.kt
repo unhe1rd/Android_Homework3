@@ -2,7 +2,7 @@ package com.example.homework3.screens.profileScreen.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.homework2.models.Vehicle
+import com.example.homework3.screens.profileScreen.models.Vehicle
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -27,8 +27,7 @@ class MyCarsViewModel : ViewModel() {
 
         viewModelScope.launch {
             try {
-                // Здесь будет загрузка из репозитория/API
-                // Временные данные для примера
+
                 val cars = listOf(
                     Vehicle(
                         id = "1",
