@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.homework2.models.Vehicle
+import com.example.homework3.screens.profileScreen.models.Vehicle
 import com.example.homework3.screens.profileScreen.viewModel.MyCarsState
 import com.example.homework3.screens.profileScreen.viewModel.MyCarsViewModel
 
@@ -58,7 +58,7 @@ fun MyCarsScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /* Открыть экран добавления авто */ },
+                onClick = { },
                 containerColor = Color(0xFFBAD4FF)
             ) {
                 Icon(Icons.Default.Add, contentDescription = "Добавить авто")
@@ -162,7 +162,6 @@ private fun CarCard(vehicle: Vehicle) {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Марка и модель
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -182,25 +181,21 @@ private fun CarCard(vehicle: Vehicle) {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Номерной знак
             CardInfoRow(
                 label = "Гос. номер:",
                 value = vehicle.licensePlate
             )
 
-            // СТС
             CardInfoRow(
                 label = "СТС:",
                 value = vehicle.stsNumber
             )
 
-            // ПТС
             CardInfoRow(
                 label = "ПТС:",
                 value = vehicle.ptsNumber
             )
 
-            // Тип кузова
             CardInfoRow(
                 label = "Тип кузова:",
                 value = vehicle.bodyType

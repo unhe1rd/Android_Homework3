@@ -11,20 +11,4 @@ class InstructionRepository (
     suspend fun getAllInstructions(): ApiResponse<List<Instruction>> {
         return networkService.getAllInstructions()
     }
-
-    suspend fun getInstructionById(id: String): ApiResponse<Instruction> {
-        return networkService.getInstructionById(id)
-    }
-
-    suspend fun getFavoriteInstructions(): ApiResponse<List<Instruction>> {
-        return networkService.getFavoriteInstructions()
-    }
-
-    suspend fun searchInstructions(query: String): ApiResponse<List<Instruction>> {
-        return networkService.searchInstructions(query)
-    }
-
-    suspend fun toggleFavorite(instructionId: String, isFavorite: Boolean): ApiResponse<Boolean> {
-        return networkService.toggleFavorite(instructionId, isFavorite)
-    }
 }

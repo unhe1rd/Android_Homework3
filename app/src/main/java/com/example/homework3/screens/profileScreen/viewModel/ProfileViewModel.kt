@@ -1,9 +1,9 @@
-package com.example.homework2.viewModel
+package com.example.homework3.screens.profileScreen.viewModel
 
 import androidx.lifecycle.viewModelScope
-import com.example.homework2.models.ProfileAction
-import com.example.homework2.models.ProfileState
-import com.example.homework2.models.UserProfile
+import com.example.homework3.screens.profileScreen.models.ProfileAction
+import com.example.homework3.screens.profileScreen.models.ProfileState
+import com.example.homework3.screens.profileScreen.models.UserProfile
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,7 +33,6 @@ class ProfileViewModel : BaseViewModel<ProfileAction, ProfileState>() {
             is ProfileAction.ReportBug -> reportBug()
             is ProfileAction.OpenMyCar -> openMyCar()
             is ProfileAction.Logout -> logout()
-            is ProfileAction.NavigateTo -> navigateTo(action.destination)
         }
     }
 
@@ -78,7 +77,5 @@ class ProfileViewModel : BaseViewModel<ProfileAction, ProfileState>() {
         }
     }
 
-    private fun navigateTo(destination: String) {
-        // Логика навигации
-    }
+
 }

@@ -84,10 +84,7 @@ fun InstructionsList(
     ) {
         items(instructions) { instruction ->
             MainItemCard(
-                title = instruction.title,
-                subtitle = instruction.subtitle,
-                difficulty = instruction.difficulty,
-                imageResId = instruction.imageResId,
+                instruction = instruction,
                 onClick = {
                     navController.navigate("instruction/${instruction.id}")
                 }
