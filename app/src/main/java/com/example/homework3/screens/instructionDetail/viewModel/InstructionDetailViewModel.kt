@@ -22,12 +22,10 @@ class InstructionDetailViewModel : ViewModel() {
         viewModelScope.launch {
             _instruction.value = ApiResponse.Loading(true)
 
-            // Получаем все инструкции
             val response = instructionRepository.getAllInstructions()
 
             when (response) {
                 is ApiResponse.Success -> {
-                    // Находим инструкцию по ID
                     val foundInstruction = response.data.find { it.id == id }
                     if (foundInstruction != null) {
                         _instruction.value = ApiResponse.Success(foundInstruction)
@@ -39,7 +37,7 @@ class InstructionDetailViewModel : ViewModel() {
                     _instruction.value = ApiResponse.Error(response.message)
                 }
                 is ApiResponse.Loading -> {
-                    // Обработка состояния загрузки
+                    _instruction.value = ApiResponse.Loading(true)
                 }
             }
         }

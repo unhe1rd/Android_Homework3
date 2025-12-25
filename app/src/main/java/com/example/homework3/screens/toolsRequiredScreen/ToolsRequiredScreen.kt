@@ -26,15 +26,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.wear.compose.material.Chip
-import androidx.wear.compose.material.ChipDefaults
 import com.example.homework3.data.model.ToolItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ToolsRequiredScreen(
     navController: NavController,
-    instructionId: String
+    instructionId: String? = "1"
 ) {
     val tools = remember(instructionId) { getToolsForInstruction(instructionId) }
 
@@ -203,7 +201,7 @@ fun ToolCard(tool: ToolItem, index: Int) {
 }
 
 // Функция получения инструментов
-private fun getToolsForInstruction(instructionId: String): List<ToolItem> {
+private fun getToolsForInstruction(instructionId: String?): List<ToolItem> {
     return when (instructionId) {
         "oil_change" -> listOf(
             ToolItem(
